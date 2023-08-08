@@ -7,6 +7,7 @@ class UserInput extends Component {
   updateName = (event) => this.setState({ name: event.target.value });
   handleSubmit = (event) => {
     event.preventDefault();
+    this.props.addName(this.state.name);
     this.setState({ name: "" });
   };
   render() {

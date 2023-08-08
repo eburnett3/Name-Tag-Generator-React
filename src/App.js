@@ -6,6 +6,10 @@ class App extends Component {
   state = {
     names: ["Eric", "Tori", "Ghost", "Lacey", "Tito"],
   };
+  addName = (name) => {
+    const newNames = [name, ...this.state.names];
+    this.setState({ names: newNames });
+  };
   removeName = (clickedIndex) => {
     // to learn how the .filter method works, check out https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
     const filterCallback = (_, index) => index !== clickedIndex;
@@ -16,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Name Tag Generator</h1>
-        <UserInput />
+        <UserInput addName={this.addName} />
         <NameTagList names={this.state.names} removeName={this.removeName} />
       </div>
     );
